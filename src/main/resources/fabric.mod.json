@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "timestamp",
+  "version": "${version}",
+  "name": "Timestamp",
+  "description": "A simple mod that adds timestamps to chat.",
+  "authors": [
+    "InYourWalls"
+  ],
+  "contact": {
+    "repo": "https://github.com/InYourWalls/chat-timestamp"
+  },
+  "license": "MIT",
+  "icon": "assets/timestamp/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "net.inyourwalls.timestamp.TimestampClient"
+    ]
+  },
+  "mixins": [
+    "timestamp.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.10",
+    "minecraft": "1.19.2"
+  }
+}
