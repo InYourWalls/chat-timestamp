@@ -23,7 +23,7 @@ public abstract class GuiAddChatMessageMixin {
     )
     private Component addMessage(Component component) {
         return Component.literal(
-               "[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")) + "]"
+               "[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "]"
         ).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)).append(Component.literal(" ")
                 .setStyle(Style.EMPTY.applyFormat(ChatFormatting.WHITE))
                 .append(component)
