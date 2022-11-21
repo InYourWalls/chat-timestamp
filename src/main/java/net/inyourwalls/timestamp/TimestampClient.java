@@ -19,7 +19,6 @@ public class TimestampClient implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        // Register configuration.
-        LOGGER.info("Registering config...");
+        LOGGER.info("Hello!");
     }
 }

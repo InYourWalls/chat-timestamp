@@ -11,6 +11,7 @@ import net.minecraft.network.chat.TextColor;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
 import org.spongepowered.configurate.loader.ConfigurationLoader;
+import org.spongepowered.configurate.yaml.NodeStyle;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
 @Config(name = "timestamp")
@@ -29,7 +30,10 @@ public class TimestampConfig implements ConfigData {
 
     public TimestampConfig() {
         // Load the config from disk.
-        loader = YamlConfigurationLoader.builder().path(FabricLoader.getInstance().getConfigDir().resolve("timestamp.yml")).build();
+        loader = YamlConfigurationLoader.builder()
+                .path(FabricLoader.getInstance().getConfigDir().resolve("timestamp.yml"))
+                .nodeStyle(NodeStyle.BLOCK)
+                .build();
 
         try {
             // Try loading from disk.
