@@ -22,11 +22,10 @@ public abstract class GuiAddChatMessageMixin {
             argsOnly = true
     )
     private Component addMessage(Component component) {
-        return Component.literal(
-               "[" + LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")) + "]"
-        ).setStyle(Style.EMPTY.applyFormat(ChatFormatting.GRAY)).append(Component.literal(" ")
-                .setStyle(Style.EMPTY.applyFormat(ChatFormatting.WHITE))
-                .append(component)
-        );
+        // If it is multiline, don't display timestamps.
+        if (component.contains(Component.literal("\n"))) return component;
+
+        // Get info from the config.
+        return component;
     }
 }

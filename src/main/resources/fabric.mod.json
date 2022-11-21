@@ -16,6 +16,9 @@
   "entrypoints": {
     "client": [
       "net.inyourwalls.timestamp.TimestampClient"
+    ],
+    "modmenu": [
+      "net.inyourwalls.timestamp.config.TimestampModMenu"
     ]
   },
   "mixins": [
