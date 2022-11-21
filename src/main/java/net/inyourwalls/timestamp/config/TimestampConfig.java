@@ -2,11 +2,8 @@
 package net.inyourwalls.timestamp.config;
 
 // Imports:
-import me.shedaniel.autoconfig.ConfigData;
-import me.shedaniel.autoconfig.annotation.Config;
 import net.fabricmc.loader.api.FabricLoader;
 import net.inyourwalls.timestamp.TimestampClient;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.TextColor;
 import org.spongepowered.configurate.CommentedConfigurationNode;
 import org.spongepowered.configurate.ConfigurateException;
@@ -14,8 +11,7 @@ import org.spongepowered.configurate.loader.ConfigurationLoader;
 import org.spongepowered.configurate.yaml.NodeStyle;
 import org.spongepowered.configurate.yaml.YamlConfigurationLoader;
 
-@Config(name = "timestamp")
-public class TimestampConfig implements ConfigData {
+public class TimestampConfig {
     // Configurate nodes.
     private final ConfigurationLoader<CommentedConfigurationNode> loader;
     private CommentedConfigurationNode root;
