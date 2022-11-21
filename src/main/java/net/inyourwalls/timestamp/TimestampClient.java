@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 public class TimestampClient implements ClientModInitializer {
     // Get a logger.
     public static final Logger LOGGER = LoggerFactory.getLogger("timestamp");
+    public static final TimestampConfig CONFIG = new TimestampConfig();
 
     @Override
     public void onInitializeClient() {
