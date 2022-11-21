@@ -2,10 +2,13 @@
 package net.inyourwalls.timestamp.mixin;
 
 // Imports:
+import net.inyourwalls.timestamp.TimestampClient;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
@@ -24,8 +27,15 @@ public abstract class GuiAddChatMessageMixin {
     private Component addMessage(Component component) {
         // If it is multiline, don't display timestamps.
         if (component.contains(Component.literal("\n"))) return component;
+        // Ditto if it is disabled in config.
+        if (!TimestampClient.CONFIG.isEnabled()) return component;
 
         // Get info from the config.
-        return component;
+        TextColor colour = TimestampClient.CONFIG.getColour();
+        String format = TimestampClient.CONFIG.getTimeFormat();
+        MutableComponent timestamp = Component.literal(LocalDateTime.now().format(DateTimeFormatter.ofPattern(format))).setStyle(Style.EMPTY.withColor(colour));
+
+        // Add a space and reset styling.
+        return timestamp.append(Component.literal(" ").setStyle(Style.EMPTY).append(component));
     }
 }

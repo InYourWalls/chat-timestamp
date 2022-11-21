@@ -9,9 +9,14 @@ import net.minecraft.network.chat.TextColor;
 
 @Config(name = "timestamp")
 public class TimestampConfig implements ConfigData {
+    // Config fields.
     private boolean enabled = true;
     private String timeFormat = "HH:mm:ss";
     private TextColor colour = TextColor.fromLegacyFormat(ChatFormatting.DARK_GRAY);
+
+    public TimestampConfig() {
+        // Load the config from disk.
+    }
 
     public boolean isEnabled() {
         return enabled;
@@ -35,5 +40,9 @@ public class TimestampConfig implements ConfigData {
 
     public void setColour(int colour) {
         this.colour = TextColor.fromRgb(colour);
+    }
+
+    public void save() {
+        // Save the config to disk.
     }
 }

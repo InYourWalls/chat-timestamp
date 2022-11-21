@@ -7,10 +7,10 @@ import com.terraformersmc.modmenu.api.ModMenuApi;
 import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
-import net.inyourwalls.timestamp.TimestampClient;
 import net.minecraft.network.chat.Component;
 
-import java.util.Map;
+
+import static net.inyourwalls.timestamp.TimestampClient.CONFIG;
 
 public class TimestampModMenu implements ModMenuApi {
     @Override
@@ -24,18 +24,21 @@ public class TimestampModMenu implements ModMenuApi {
             builder.setTitle(Component.translatable("config.timestamp.title"));
 
             // Add entries.
-            main.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.timestamp.option.enabled"), TimestampClient.CONFIG.isEnabled())
+            main.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.timestamp.option.enabled"), CONFIG.isEnabled())
                     .setTooltip(Component.translatable("config.timestamp.tooltip.enabled"))
-                    .setSaveConsumer(TimestampClient.CONFIG::setEnabled)
+                    .setSaveConsumer(CONFIG::setEnabled)
                     .build());
-            main.addEntry(entryBuilder.startColorField(Component.translatable("config.timestamp.option.colour"), TimestampClient.CONFIG.getColour())
+            main.addEntry(entryBuilder.startColorField(Component.translatable("config.timestamp.option.colour"), CONFIG.getColour())
                     .setTooltip(Component.translatable("config.timestamp.tooltip.colour"))
-                    .setSaveConsumer(TimestampClient.CONFIG::setColour)
+                    .setSaveConsumer(CONFIG::setColour)
                     .build());
-            main.addEntry(entryBuilder.startStrField(Component.translatable("config.timestamp.option.format"), TimestampClient.CONFIG.getTimeFormat())
+            main.addEntry(entryBuilder.startStrField(Component.translatable("config.timestamp.option.format"), CONFIG.getTimeFormat())
                     .setTooltip(Component.translatable("config.timestamp.tooltip.format"))
-                    .setSaveConsumer(TimestampClient.CONFIG::setTimeFormat)
+                    .setSaveConsumer(CONFIG::setTimeFormat)
                     .build());
+
+            // Save.
+            builder.setSavingRunnable(CONFIG::save);
 
             return builder.build();
         };
