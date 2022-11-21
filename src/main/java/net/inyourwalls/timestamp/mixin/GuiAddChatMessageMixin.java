@@ -35,7 +35,7 @@ public abstract class GuiAddChatMessageMixin {
         String format = TimestampClient.CONFIG.getTimeFormat();
         MutableComponent timestamp = Component.literal(LocalDateTime.now().format(DateTimeFormatter.ofPattern(format))).setStyle(Style.EMPTY.withColor(colour));
 
-        // Add a space and reset styling.
-        return timestamp.append(Component.literal(" ").setStyle(Style.EMPTY).append(component));
+        // Add a space and set styling to white.
+        return timestamp.append(Component.literal(" ").setStyle(Style.EMPTY.withColor(TextColor.fromLegacyFormat(ChatFormatting.WHITE))).append(component));
     }
 }
