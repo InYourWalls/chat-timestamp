@@ -1,11 +1,10 @@
 {
-  "text.autoconfig.timestamp.title": "Timestamp Config",
-  "text.autoconfig.timestamp.option.enabled": "Enabled",
-  "text.autoconfig.timestamp.option.enabled.@Tooltip": "Turns timestamps on/off.",
-  "text.autoconfig.timestamp.option.timeFormat": "Time Format",
-  "text.autoconfig.timestamp.option.timeFormat.@Tooltip[0]": "The formatting of the time.",
-  "text.autoconfig.timestamp.option.timeFormat.@Tooltip[1]": "Uses the same formatting patterns as the Java DateTimeFormatter class.",
-  "text.autoconfig.timestamp.option.formatting": "Text Format",
-  "text.autoconfig.timestamp.option.formatting.@Tooltip[0]": "Format string used for the timestamp. Takes a single string argument (%s) for the time."
-  "text.autoconfig.timestamp.option.formatting.@Tooltip[1]": "Supports legacy formatting codes."
+  "config.timestamp.title": "Timestamp Config",
+  "config.timestamp.category": "Main",
+  "config.timestamp.option.enabled": "Enabled",
+  "config.timestamp.tooltip.enabled": "Turn the timestamps on or off.",
+  "config.timestamp.option.colour": "Timestamp Colour",
+  "config.timestamp.tooltip.colour": "The colour of the timestamps.",
+  "config.timestamp.option.format": "Time Format",
+  "config.timestamp.tooltip.format": "The format of the timestamp. Uses the same formatting as DateTimeFormatter."
 }

@@ -17,11 +17,23 @@ public class TimestampConfig implements ConfigData {
         return enabled;
     }
 
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
     public String getTimeFormat() {
         return timeFormat;
     }
 
+    public void setTimeFormat(String timeFormat) {
+        this.timeFormat = timeFormat;
+    }
+
     public TextColor getColour() {
         return colour;
+    }
+
+    public void setColour(int colour) {
+        this.colour = TextColor.fromRgb(colour);
     }
 }

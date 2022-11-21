@@ -21,6 +21,5 @@ public class TimestampClient implements ClientModInitializer {
     public void onInitializeClient() {
         // Register configuration.
         LOGGER.info("Registering config...");
-        AutoConfig.register(TimestampConfig.class, GsonConfigSerializer::new);
     }
 }
