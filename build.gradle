@@ -1,6 +1,7 @@
 plugins {
     id 'fabric-loom' version '0.13.20'
     id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 version = project.mod_version
@@ -23,10 +24,12 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    modApi 'me.shedaniel.cloth:cloth-config-fabric:8.2.88'
+    // Include ClothConfig inside the jar.
+    include modApi('me.shedaniel.cloth:cloth-config-fabric:8.2.88')
     modApi 'com.terraformersmc:modmenu:4.1.1'
 
-    implementation 'org.spongepowered:configurate-yaml:4.1.2'
+    // shadow was easier than including jar-in-jar deps over and over again...
+    shadow 'org.spongepowered:configurate-yaml:4.1.2'
 }
 
 processResources {
@@ -36,6 +39,22 @@ processResources {
     filesMatching("fabric.mod.json") {
         expand "version": project.version
     }
+}
+
+configurations {
+    shadow
+    implementation.extendsFrom shadow
+}
+
+shadowJar {
+    configurations = [project.configurations.shadow]
+    archiveClassifier.set('shadow')
+    relocate 'org.spongepowered.configurate', 'net.inyourwalls.shadow.configurate'
+}
+
+remapJar {
+    dependsOn(shadowJar)
+    inputFile.set(shadowJar.archiveFile)
 }
 
 def targetJavaVersion = 17
